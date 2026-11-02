@@ -105,7 +105,6 @@ footer a{color:#fff}
 <a class="wa" id="wa" target="_blank" rel="noopener">WhatsApp</a>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ===== EDIT THESE: your clinic details ===== */
 const C={
@@ -114,7 +113,6 @@ const C={
  photo:"", // paste a photo URL, e.g. "doctor.jpg"
  hours:"Mon, Wed to Sat: 8:30 AM to 8:00 PM · Sun: 8:30 AM to 2:00 PM · Tue: 8:30 AM to 1:00 PM",
  mapQ:"Senthil Dental Hospital, Hospital St, Thiruthuraipoondi, Tamil Nadu 614713",
- sb:{url:"",key:""}, // Supabase project URL + anon key. Empty = demo mode (data stays in this browser)
  reviews:[] // real reviews only: [{n:"Name",t:"Text"}]
 };
 const SV=[["🦷","Check-up & cleaning","Scaling, polishing, X-rays"],["🛠️","Fillings & root canal","Pain-free RCT"],["😁","Braces & aligners","Metal, ceramic, clear"],["🦴","Implants & dentures","Replace missing teeth"],["🧒","Kids dentistry","Gentle care for children"],["🚨","Tooth pain? Emergency","Same-day slots when open"]];
@@ -136,39 +134,41 @@ const days=n=>{const a=[],d=new Date();while(a.length<n){a.push(iso(d));d.setDat
 const ref=()=>'SC'+Math.random().toString(36).slice(2,8).toUpperCase();
 function toast(m){const e=$('#toast');e.innerHTML='<div class="toast">'+esc(m)+'</div>';setTimeout(()=>e.innerHTML='',2400)}
 
-/* ===== data layer: Supabase if configured, else browser demo mode ===== */
-const SB=(C.sb.url&&C.sb.key&&window.supabase)?supabase.createClient(C.sb.url,C.sb.key):null;
+/* ===== data layer: Upstash API on Vercel when available, else browser demo mode ===== */
+let BE=false,tok=sessionStorage.getItem('sc_tok')||'',user=null;
 const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
 const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 let T={}; // taken times per date
+const call=async(path,body,auth)=>{const o={method:body?'POST':'GET',headers:{}};if(body){o.headers['Content-Type']='application/json';o.body=JSON.stringify(body)}if(auth&&tok)o.headers.Authorization='Bearer '+tok;
+ try{const r=await fetch('/api/'+path,o);let j={};try{j=await r.json()}catch(e){}if(r.status==401&&auth){tok='';sessionStorage.removeItem('sc_tok');user=null}return{ok:r.ok,status:r.status,j}}catch(e){return{ok:false,status:0,j:{}}}};
 const api={
  async load(){const d1=today(),d2=days(14)[13];T={};
-  if(SB){const{data}=await SB.rpc('taken_slots',{d1,d2});(data||[]).forEach(r=>(T[r.d]=T[r.d]||[]).push(r.t))}
+  if(BE){const r=await call('taken?d1='+d1+'&d2='+d2);if(r.ok)T=r.j}
   else{ld('sc_appts',[]).filter(a=>!['Cancelled','No-show'].includes(a.status)).forEach(a=>(T[a.date]=T[a.date]||[]).push(a.time));ld('sc_blocked',[]).forEach(k=>{const[d,x]=k.split('|');(T[d]=T[d]||[]).push(x)})}},
  async book(a){
-  if(SB){const{error}=await SB.from('appointments').insert(a);if(!error)return null;
-   return /one_slot|duplicate/.test(error.message)?'That slot was just taken. Please pick another time.':/limit/.test(error.message)?'This number already has 2 upcoming bookings. Please call us.':'Could not book. Please try again or call us.'}
+  if(BE){const r=await call('book',a);return r.ok?null:(r.j.error||'Could not book. Please try again or call us.')}
   await api.load();if((T[a.date]||[]).some(x=>x==a.time||x=='*'))return 'That slot was just taken. Please pick another time.';
   const L=ld('sc_appts',[]);L.push({...a,id:a.ref});sv('sc_appts',L);return null},
- async list(){if(SB){const{data}=await SB.from('appointments').select('*').order('date').order('time');return data||[]}return ld('sc_appts',[])},
- async status(id,s){if(SB)await SB.from('appointments').update({status:s}).eq('id',id);else{const L=ld('sc_appts',[]);const a=L.find(x=>x.id==id);if(a)a.status=s;sv('sc_appts',L)}},
- async blocks(d){if(SB){const{data}=await SB.from('blocked').select('time').eq('date',d);return(data||[]).map(r=>r.time)}return ld('sc_blocked',[]).filter(k=>k.startsWith(d+'|')).map(k=>k.split('|')[1])},
- async block(d,x,on){if(SB){on?await SB.from('blocked').insert({date:d,time:x}):await SB.from('blocked').delete().eq('date',d).eq('time',x)}else{let L=ld('sc_blocked',[]);const k=d+'|'+x;L=on?[...L,k]:L.filter(y=>y!=k);sv('sc_blocked',L)}},
- async lookup(r,p){if(SB){const{data}=await SB.rpc('lookup_booking',{r,p});return data&&data[0]}return ld('sc_appts',[]).find(a=>a.ref==r&&a.phone==p)},
- async cancel(r,p){if(SB)await SB.rpc('cancel_booking',{r,p});else{const L=ld('sc_appts',[]);const a=L.find(x=>x.ref==r&&x.phone==p);if(a)a.status='Cancelled';sv('sc_appts',L)}}
+ async walk(a){if(BE){const r=await call('book',a,1);return r.ok?null:(r.j.error||'Could not save.')}return api.book(a)},
+ async list(){if(BE){const r=await call('list',null,1);return r.ok?r.j.items:[]}return ld('sc_appts',[])},
+ async status(id,s){if(BE)await call('status',{id,status:s},1);else{const L=ld('sc_appts',[]);const a=L.find(x=>x.id==id);if(a)a.status=s;sv('sc_appts',L)}},
+ async blocks(d){if(BE){const r=await call('blocks?d='+d,null,1);return r.ok?r.j.times:[]}return ld('sc_blocked',[]).filter(k=>k.startsWith(d+'|')).map(k=>k.split('|')[1])},
+ async block(d,x,on){if(BE)await call('block',{date:d,time:x,on},1);else{let L=ld('sc_blocked',[]);const k=d+'|'+x;L=on?[...L,k]:L.filter(y=>y!=k);sv('sc_blocked',L)}},
+ async lookup(r,p){if(BE){const x=await call('lookup',{ref:r,phone:p});return x.j.appt||null}return ld('sc_appts',[]).find(a=>a.ref==r&&a.phone==p)},
+ async cancel(r,p){if(BE)await call('cancel',{ref:r,phone:p});else{const L=ld('sc_appts',[]);const a=L.find(x=>x.ref==r&&x.phone==p);if(a)a.status='Cancelled';sv('sc_appts',L)}}
 };
 const past=(d,x)=>d<today()||(d==today()&&x<=nowT());
 const free=(d,x)=>!(T[d]||[]).some(y=>y==x||y=='*')&&!past(d,x);
 const nextFree=n=>{const r=[];for(const d of days(7))for(const x of slotsFor(d))if(free(d,x)){r.push({d,x});if(r.length==n)return r}return r};
 
 /* ===== auth ===== */
-let user=null;
-async function authInit(){if(SB){const{data}=await SB.auth.getSession();user=data.session?.user||null}else user=sessionStorage.getItem('sc_demo')?{email:'demo'}:null}
-async function login(){const e=$('#em').value.trim(),p=$('#pw').value;
- if(SB){const{error}=await SB.auth.signInWithPassword({email:e,password:p});if(error)return $('#er').textContent='Wrong email or password.'}
+async function authInit(){if(BE){if(tok){const r=await call('me',null,1);user=r.ok?{email:'staff'}:null}else user=null}else user=sessionStorage.getItem('sc_demo')?{email:'demo'}:null}
+async function init(){try{const r=await fetch('/api/ping');const j=await r.json();BE=!!j.ok}catch(e){BE=false}await authInit()}
+async function login(){const p=$('#pw').value;
+ if(BE){const r=await call('login',{password:p});if(!r.ok)return $('#er').textContent=r.status==429?'Too many attempts. Try again later.':'Wrong password.';tok=r.j.token;sessionStorage.setItem('sc_tok',tok)}
  else{if(p!=='demo')return $('#er').textContent='Demo mode: use password "demo".';sessionStorage.setItem('sc_demo','1')}
  await authInit();route()}
-async function logout(){if(SB)await SB.auth.signOut();sessionStorage.removeItem('sc_demo');user=null;route()}
+async function logout(){tok='';sessionStorage.removeItem('sc_tok');sessionStorage.removeItem('sc_demo');user=null;route()}
 
 /* ===== state ===== */
 let bk={step:1,date:null,time:null,reason:'Check-up'},adminDate=today(),blockDate=today(),q='';
@@ -210,9 +210,9 @@ function manage(){return `<section><div class="wrap" style="max-width:420px"><h2
  <div class="err" id="er" role="alert"></div><button class="btn" onclick="find()">Find booking</button><div id="mr"></div></div></section>`}
 async function staff(){
  if(!user)return `<section><div class="wrap" style="max-width:420px"><h2 tabindex="-1">Staff login</h2><p class="sub">For the receptionist and the doctor.</p>
- <label for="em">Email</label><input id="em" type="email" autocomplete="username" value="${SB?'':'demo'}"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+ <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" ${BE?'':'placeholder="demo"'}>
  <div class="err" id="er" role="alert"></div><button class="btn" onclick="login()">Log in</button></div></section>`;
- const all=await api.list(),bl=await api.blocks(blockDate),ql=q.toLowerCase();
+ const all=await api.list(),bl=await api.blocks(blockDate),ql=q.toLowerCase();if(!user)return staff();
  const list=(ql?all.filter(a=>(a.name+a.phone+a.ref).toLowerCase().includes(ql)):all.filter(a=>a.date==adminDate)).sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time));
  const td=all.filter(a=>a.date==today()&&!['Cancelled','No-show'].includes(a.status)).length,pd=all.filter(a=>a.status=='Pending'&&a.date>=today()).length,full=bl.includes('*');
  return `<section><div class="wrap"><h2 tabindex="-1">Clinic dashboard</h2>
@@ -255,7 +255,7 @@ async function setSt(id,s){await api.status(id,s);toast('Marked '+s);route()}
 async function toggleB(x,on){await api.block(blockDate,x,on);route()}
 async function walkIn(){const n=$('#wn').value.trim(),p=$('#wp').value.trim(),x=$('#wt').value;
  if(n.length<2||!/^[6-9]\d{9}$/.test(p)||!x)return $('#er').textContent='Enter a name, a valid 10-digit mobile and a time.';
- const e=await api.book({ref:ref(),date:adminDate,time:x,name:n,phone:p,reason:'Walk-in',status:'Confirmed',source:'Walk-in'});
+ const e=await api.walk({ref:ref(),date:adminDate,time:x,name:n,phone:p,reason:'Walk-in',status:'Confirmed',source:'Walk-in'});
  if(e)return $('#er').textContent=e;toast('Walk-in saved');route()}
 function ics(){const a=ld('sc_last',null);if(!a)return;const s=a.date.replace(/-/g,'')+'T'+a.time.replace(':','')+'00',m=+a.time.slice(0,2)*60+ +a.time.slice(3)+30,e=a.date.replace(/-/g,'')+'T'+pad(Math.floor(m/60))+pad(m%60)+'00';
  const b=new Blob([`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART:${s}\r\nDTEND:${e}\r\nSUMMARY:Dental appointment at ${C.name}\r\nLOCATION:${C.area}\r\nDESCRIPTION:Booking code ${a.ref}\r\nEND:VEVENT\r\nEND:VCALENDAR`],{type:'text/calendar'});
@@ -263,7 +263,7 @@ function ics(){const a=ld('sc_last',null);if(!a)return;const s=a.date.replace(/-
 
 /* ===== chrome + router ===== */
 function chrome(){$('#nbk').textContent=t('book');$('#nmg').textContent=t('manage');$('#bbook').textContent=t('book');$('#bcall').textContent='📞 '+t('call');$('#bcall').href='tel:'+C.phone;$('#wa').href='https://wa.me/'+C.wa;document.documentElement.lang=lg=='ta'?'ta':'en';
- $('#demo').innerHTML=SB?'':'<div class="demo">Demo mode: bookings stay in this browser only. Add Supabase keys to go live.</div>';
+ $('#demo').innerHTML=BE?'':'<div class="demo">Demo mode: bookings stay in this browser only. Connect the Vercel backend to go live.</div>';
  $('#foot').innerHTML=`<b>${C.name}</b><br>${C.area} · <a href="tel:${C.phone}">${C.phone}</a><br><small>${C.hours}</small>`}
 const TI={'#/book':'Book an appointment','#/success':'Booking confirmed','#/manage':'My booking','#/staff':'Staff'};
 async function route(){
@@ -275,7 +275,7 @@ async function route(){
  if(h=='#/book'&&bk.step==3)$('#nm')?.focus();
  window.scrollTo(0,0)}
 window.addEventListener('hashchange',route);
-authInit().then(route);
+init().then(route);
 </script>
 </body>
 </html>
