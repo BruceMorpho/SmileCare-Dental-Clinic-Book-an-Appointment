@@ -3,26 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SmileCare Dental Clinic – Book an Appointment</title>
+<title>Senthil Dental Hospital – Book an Appointment</title>
+<meta name="description" content="Book a dental appointment online at Senthil Dental Hospital, Thiruthuraipoondi. Check-ups, braces, RCT, implants and emergency care.">
+<meta property="og:title" content="Senthil Dental Hospital, Thiruthuraipoondi">
+<meta property="og:description" content="Pick a time online. No phone calls, no waiting in line.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dentist","name":"Senthil Dental Hospital","address":{"@type":"PostalAddress","streetAddress":"Hospital Street","addressLocality":"Thiruthuraipoondi","addressRegion":"Tamil Nadu","postalCode":"614713","addressCountry":"IN"},"telephone":"+919876543210"}</script>
 <style>
 :root{--ink:#0c2e35;--teal:#0f766e;--aqua:#19b5a5;--mint:#e4f4f1;--paper:#f6fbfa;--line:#cfe3df;--amber:#b7791f;--red:#c0392b;--r:14px}
 *{box-sizing:border-box;margin:0}
 body{font:16px/1.55 Figtree,system-ui,sans-serif;color:var(--ink);background:var(--paper)}
 h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.15}
-a{color:var(--teal)}
-button{font:inherit;cursor:pointer}
+h1:focus,h2:focus{outline:none}
+a{color:var(--teal)}button{font:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--aqua);outline-offset:2px}
 .wrap{max-width:1000px;margin:auto;padding:0 18px}
 header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;max-width:1000px;margin:auto;flex-wrap:wrap}
+nav{flex-wrap:wrap;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 18px;max-width:1000px;margin:auto}
 .logo{font:800 1.2rem 'Bricolage Grotesque',sans-serif;color:var(--ink);text-decoration:none}
-.logo span{color:var(--aqua)}
-nav .links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-nav a.l{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500}
-nav a.l:hover{background:var(--mint)}
-.btn{display:inline-block;background:var(--teal);color:#fff;border:0;border-radius:12px;padding:12px 20px;font-weight:700;text-decoration:none;min-height:44px}
+.logo span{color:var(--teal)}
+.links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--teal);color:#fff;border:0;border-radius:12px;padding:12px 20px;font-weight:700;text-decoration:none;min-height:44px;text-align:center}
 .btn:hover{background:var(--ink)}
 .btn.ghost{background:#fff;color:var(--teal);border:2px solid var(--teal)}
 .btn.sm{padding:8px 12px;min-height:36px;font-size:.9rem}
@@ -36,32 +39,36 @@ nav a.l:hover{background:var(--mint)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:700;color:var(--ink);min-height:40px}
 .chip:hover:not(:disabled){border-color:var(--teal)}
-.chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
-.chip:disabled{background:#eef2f1;color:#9aa9a6;text-decoration:line-through;cursor:not-allowed}
+.chip[aria-pressed=true]{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip:disabled{background:#eef2f1;color:#6b7c79;text-decoration:line-through;cursor:not-allowed}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px}
+.day{flex:none;width:68px;border-radius:var(--r);padding:8px 0;text-align:center;line-height:1.2}
+.day b{display:block;font:800 1.3rem 'Bricolage Grotesque',sans-serif}
+.day small{display:block}
 section{padding:40px 0}
 section h2{font-size:1.7rem;margin-bottom:6px}
-.sub{color:#4b6a70;margin-bottom:20px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
-.svc{text-align:left;width:100%;transition:border-color .15s}
-.svc:hover,.svc.on{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal)}
-.svc .i{font-size:1.6rem}
-.svc h3{font-size:1.05rem;margin:6px 0 2px}
-.svc small{color:#4b6a70}
-.two{display:grid;gap:20px;grid-template-columns:1fr}
-@media(min-width:720px){.two{grid-template-columns:1fr 1fr}}
+.sub{color:#4b6a70;margin-bottom:16px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.svc .i{font-size:1.6rem}.svc h3{font-size:1.05rem;margin:4px 0 2px}.svc small{color:#4b6a70}
+.two{display:grid;gap:24px;grid-template-columns:1fr}
+@media(min-width:720px){.two{grid-template-columns:1fr 1fr}.bar{display:none!important}.wa{bottom:20px!important}}
 .doc{display:flex;gap:16px;align-items:center}
-.avatar{width:72px;height:72px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font-size:2rem;flex:none}
-.steps{display:flex;gap:6px;margin-bottom:20px}
-.steps i{flex:1;height:6px;border-radius:3px;background:var(--line)}
-.steps i.d{background:var(--aqua)}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font:800 1.5rem 'Bricolage Grotesque';color:var(--teal);flex:none;background-size:cover}
+iframe{width:100%;height:220px;border:0;border-radius:var(--r);margin-top:12px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:8px}
+summary{font-weight:700;cursor:pointer}
+.steps{display:flex;gap:6px;margin-bottom:6px}
+.steps i{flex:1;height:6px;border-radius:3px;background:var(--line)}.steps i.d{background:var(--aqua)}
+.stl{display:flex;justify-content:space-between;font-size:.85rem;color:#4b6a70;margin-bottom:18px}
 label{display:block;font-weight:700;margin:12px 0 4px}
 input,select{width:100%;padding:12px;border:2px solid var(--line);border-radius:10px;font:inherit;background:#fff;min-height:46px}
-.err{color:var(--red);font-size:.9rem;min-height:1.3em}
+.pre{display:flex;gap:8px;align-items:center}.pre span{font-weight:700}
+.err{color:var(--red);font-size:.9rem;min-height:1.4em;margin:6px 0}
 .sum{background:var(--mint);border-radius:var(--r);padding:14px;margin:12px 0}
 .badge{font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:999px;display:inline-block}
 .Pending{background:#fdf0d5;color:var(--amber)}.Confirmed{background:#d6f3ee;color:var(--teal)}
-.Completed{background:#e3e8f5;color:#3b4a8a}.Cancelled{background:#fbe0dc;color:var(--red)}
+.Completed{background:#e3e8f5;color:#3b4a8a}.Cancelled{background:#fbe0dc;color:var(--red)}.No-show{background:#eee;color:#555}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
 .stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;text-align:center}
 .stat b{font:800 1.6rem 'Bricolage Grotesque',sans-serif;display:block}
@@ -71,167 +78,204 @@ input,select{width:100%;padding:12px;border:2px solid var(--line);border-radius:
 .acts{display:flex;gap:6px;flex-wrap:wrap}
 .empty{text-align:center;color:#4b6a70;padding:28px}
 .tabs{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
-footer{background:var(--ink);color:#cfe9e5;padding:28px 0;font-size:.95rem}
+.grp{font-weight:700;color:#4b6a70;margin:14px 0 6px}
+footer{background:var(--ink);color:#cfe9e5;padding:28px 0 90px;font-size:.95rem}
 footer a{color:#fff}
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:9}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:9}
+.demo{background:#fdf0d5;color:#6b4a0a;text-align:center;font-size:.85rem;padding:4px}
+.bar{position:fixed;bottom:0;left:0;right:0;display:flex;gap:8px;padding:8px 12px;background:#fff;border-top:1px solid var(--line);z-index:6}
+.bar a{flex:1}
+.wa{position:fixed;right:14px;bottom:74px;z-index:6;background:#128c4a;color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px #0003}
+.hp{position:absolute;left:-9999px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<div id="demo"></div>
 <header><nav>
-  <a class="logo" href="#/">Smile<span>Care</span></a>
-  <div class="links">
-    <a class="l" href="#/">Home</a>
-    <a class="l" href="#/staff">Staff login</a>
-    <a class="btn sm" href="#/book">Book appointment</a>
-  </div>
-</nav></header>
-<main id="app"></main>
+<a class="logo" href="#/">Smile<span>Care</span></a>
+<div class="links">
+<a class="btn ghost sm" href="#/manage" id="nmg"></a>
+<a class="btn ghost sm" href="#/staff" id="nst">Staff login</a>
+<a class="btn sm" href="#/book" id="nbk"></a>
+</div></nav></header>
+<main id="app" aria-live="polite"></main>
 <footer><div class="wrap" id="foot"></div></footer>
+<div class="bar"><a class="btn ghost" id="bcall"></a><a class="btn" href="#/book" id="bbook"></a></div>
+<a class="wa" id="wa" target="_blank" rel="noopener">WhatsApp</a>
+<div id="toast" role="status" aria-live="polite"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ===== EDIT THESE: your clinic details ===== */
 const C={
-  name:"SmileCare Dental Clinic", area:"Anna Nagar, Chennai", phone:"9876543210",
-  doctor:"Dr. Priya Raman", qual:"BDS, MDS (Orthodontics)", exp:"10+ years of experience",
-  hours:"Mon, Wed to Sat: 8:30 AM to 8:00 PM · Sun: 8:30 AM to 2:00 PM · Tue: 8:30 AM to 1:00 PM",
-  pins:{reception:"1234",doctor:"5678"}   // demo PINs. Replace with real login in Phase 2
+ name:"Senthil Dental Hospital", area:"Hospital Street, Thiruthuraipoondi, Tamil Nadu 614713", phone:"9876543210", wa:"919876543210",
+ doctor:"Dr. Priya Raman", qual:"BDS, MDS (Orthodontics)", exp:"10+ years of experience",
+ photo:"", // paste a photo URL, e.g. "doctor.jpg"
+ hours:"Mon, Wed to Sat: 8:30 AM to 8:00 PM · Sun: 8:30 AM to 2:00 PM · Tue: 8:30 AM to 1:00 PM",
+ mapQ:"Senthil Dental Hospital, Hospital St, Thiruthuraipoondi, Tamil Nadu 614713",
+ sb:{url:"",key:""}, // Supabase project URL + anon key. Empty = demo mode (data stays in this browser)
+ reviews:[] // real reviews only: [{n:"Name",t:"Text"}]
 };
-/* ===== storage (browser only for now) ===== */
-const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
-const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-let A=ld('sc_appts',[]), B=ld('sc_blocked',[]);
-const role=()=>{try{return sessionStorage.getItem('sc_role')}catch(e){return null}};
-const setRole=r=>{try{r?sessionStorage.setItem('sc_role',r):sessionStorage.removeItem('sc_role')}catch(e){}};
+const SV=[["🦷","Check-up & cleaning","Scaling, polishing, X-rays"],["🛠️","Fillings & root canal","Pain-free RCT"],["😁","Braces & aligners","Metal, ceramic, clear"],["🦴","Implants & dentures","Replace missing teeth"],["🧒","Kids dentistry","Gentle care for children"],["🚨","Tooth pain? Emergency","Same-day slots when open"]];
+const FQ=[["Do I need to pay online?","No. Pay at the clinic after your visit."],["Can I cancel or change my time?","Yes. Use \"My booking\" with your booking code and mobile number, or call us."],["How early should I arrive?","10 minutes early, so we can start on time."]];
+const TA={tag:"நேரத்தைத் தேர்வு செய்யுங்கள். உங்கள் இருக்கை தயார்.",sub:"ஒரு நிமிடத்தில் முன்பதிவு செய்யுங்கள். அழைப்பு தேவையில்லை.",book:"முன்பதிவு",next:"அடுத்த காலி நேரங்கள்",call:"அழைக்க",manage:"என் முன்பதிவு",d1:"தேதியைத் தேர்வு செய்யுங்கள்",d2:"நேரத்தைத் தேர்வு செய்யுங்கள்",d3:"உங்கள் விவரங்கள்",name:"முழு பெயர்",phone:"கைபேசி எண்",confirm:"முன்பதிவை உறுதி செய்",back:"பின்செல்",morning:"காலை",afternoon:"மதியம்",evening:"மாலை",svc:"சிகிச்சைகள்"};
+const EN={tag:"Pick a time. Your chair is ready.",sub:"Book a visit in under a minute. No phone calls, no waiting in line.",book:"Book appointment",next:"Next open slots",call:"Call",manage:"My booking",d1:"Choose a date",d2:"Choose a time",d3:"Your details",name:"Full name",phone:"Mobile number",confirm:"Confirm appointment",back:"Back",morning:"Morning",afternoon:"Afternoon",evening:"Evening",svc:"Treatments"};
+let lg='en';const t=k=>(lg=='ta'?TA:EN)[k]||EN[k];
+
 /* ===== helpers ===== */
-const $=s=>document.querySelector(s);
-const pad=n=>String(n).padStart(2,'0');
+const $=s=>document.querySelector(s),pad=n=>String(n).padStart(2,'0');
 const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
-const today=()=>iso(new Date());
-const nowT=()=>{const d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes())};
-const ft=t=>{let[h,m]=t.split(':').map(Number);return (h%12||12)+':'+pad(m)+' '+(h<12?'AM':'PM')};
-const fd=s=>new Date(s+'T00:00').toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>iso(new Date()),nowT=()=>{const d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes())};
+const ft=x=>{let[h,m]=x.split(':').map(Number);return (h%12||12)+':'+pad(m)+' '+(h<12?'AM':'PM')};
+const fd=s=>new Date(s+'T00:00').toLocaleDateString(lg=='ta'?'ta-IN':'en-IN',{weekday:'short',day:'numeric',month:'short'});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const HRS={0:[510,840],1:[510,1200],2:[510,780],3:[510,1200],4:[510,1200],5:[510,1200],6:[510,1200]};
 const slotsFor=d=>{const[a,b]=HRS[new Date(d+'T00:00').getDay()],r=[];for(let m=a;m<b;m+=30)r.push(pad(Math.floor(m/60))+':'+pad(m%60));return r};
-const taken=(d,t)=>A.some(a=>a.date==d&&a.time==t&&a.status!='Cancelled')||B.includes(d+'|'+t)||B.includes(d+'|*');
-const past=(d,t)=>d<today()||(d==today()&&t<=nowT());
-const free=(d,t)=>!taken(d,t)&&!past(d,t);
 const days=n=>{const a=[],d=new Date();while(a.length<n){a.push(iso(d));d.setDate(d.getDate()+1)}return a};
-const nextFree=n=>{const r=[];for(const d of days(7)){for(const t of slotsFor(d)){if(free(d,t)){r.push({d,t});if(r.length==n)return r}}}return r};
-function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}
-/* ===== booking state ===== */
-let bk={step:1,service:null,date:null,time:null,walk:false,err:''};
-let adminDate=today(), blockDate=today(), lastBooked=null;
+const ref=()=>'SC'+Math.random().toString(36).slice(2,8).toUpperCase();
+function toast(m){const e=$('#toast');e.innerHTML='<div class="toast">'+esc(m)+'</div>';setTimeout(()=>e.innerHTML='',2400)}
+
+/* ===== data layer: Supabase if configured, else browser demo mode ===== */
+const SB=(C.sb.url&&C.sb.key&&window.supabase)?supabase.createClient(C.sb.url,C.sb.key):null;
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let T={}; // taken times per date
+const api={
+ async load(){const d1=today(),d2=days(14)[13];T={};
+  if(SB){const{data}=await SB.rpc('taken_slots',{d1,d2});(data||[]).forEach(r=>(T[r.d]=T[r.d]||[]).push(r.t))}
+  else{ld('sc_appts',[]).filter(a=>!['Cancelled','No-show'].includes(a.status)).forEach(a=>(T[a.date]=T[a.date]||[]).push(a.time));ld('sc_blocked',[]).forEach(k=>{const[d,x]=k.split('|');(T[d]=T[d]||[]).push(x)})}},
+ async book(a){
+  if(SB){const{error}=await SB.from('appointments').insert(a);if(!error)return null;
+   return /one_slot|duplicate/.test(error.message)?'That slot was just taken. Please pick another time.':/limit/.test(error.message)?'This number already has 2 upcoming bookings. Please call us.':'Could not book. Please try again or call us.'}
+  await api.load();if((T[a.date]||[]).some(x=>x==a.time||x=='*'))return 'That slot was just taken. Please pick another time.';
+  const L=ld('sc_appts',[]);L.push({...a,id:a.ref});sv('sc_appts',L);return null},
+ async list(){if(SB){const{data}=await SB.from('appointments').select('*').order('date').order('time');return data||[]}return ld('sc_appts',[])},
+ async status(id,s){if(SB)await SB.from('appointments').update({status:s}).eq('id',id);else{const L=ld('sc_appts',[]);const a=L.find(x=>x.id==id);if(a)a.status=s;sv('sc_appts',L)}},
+ async blocks(d){if(SB){const{data}=await SB.from('blocked').select('time').eq('date',d);return(data||[]).map(r=>r.time)}return ld('sc_blocked',[]).filter(k=>k.startsWith(d+'|')).map(k=>k.split('|')[1])},
+ async block(d,x,on){if(SB){on?await SB.from('blocked').insert({date:d,time:x}):await SB.from('blocked').delete().eq('date',d).eq('time',x)}else{let L=ld('sc_blocked',[]);const k=d+'|'+x;L=on?[...L,k]:L.filter(y=>y!=k);sv('sc_blocked',L)}},
+ async lookup(r,p){if(SB){const{data}=await SB.rpc('lookup_booking',{r,p});return data&&data[0]}return ld('sc_appts',[]).find(a=>a.ref==r&&a.phone==p)},
+ async cancel(r,p){if(SB)await SB.rpc('cancel_booking',{r,p});else{const L=ld('sc_appts',[]);const a=L.find(x=>x.ref==r&&x.phone==p);if(a)a.status='Cancelled';sv('sc_appts',L)}}
+};
+const past=(d,x)=>d<today()||(d==today()&&x<=nowT());
+const free=(d,x)=>!(T[d]||[]).some(y=>y==x||y=='*')&&!past(d,x);
+const nextFree=n=>{const r=[];for(const d of days(7))for(const x of slotsFor(d))if(free(d,x)){r.push({d,x});if(r.length==n)return r}return r};
+
+/* ===== auth ===== */
+let user=null;
+async function authInit(){if(SB){const{data}=await SB.auth.getSession();user=data.session?.user||null}else user=sessionStorage.getItem('sc_demo')?{email:'demo'}:null}
+async function login(){const e=$('#em').value.trim(),p=$('#pw').value;
+ if(SB){const{error}=await SB.auth.signInWithPassword({email:e,password:p});if(error)return $('#er').textContent='Wrong email or password.'}
+ else{if(p!=='demo')return $('#er').textContent='Demo mode: use password "demo".';sessionStorage.setItem('sc_demo','1')}
+ await authInit();route()}
+async function logout(){if(SB)await SB.auth.signOut();sessionStorage.removeItem('sc_demo');user=null;route()}
+
+/* ===== state ===== */
+let bk={step:1,date:null,time:null,reason:'Check-up'},adminDate=today(),blockDate=today(),q='';
+
 /* ===== views ===== */
-function home(){
-  const nf=nextFree(5);
-  return `<div class="hero"><div class="wrap">
-    <h1>Pick a time. Your chair is ready.</h1>
-    <p>Book a visit with ${esc(C.doctor)} in under a minute. No phone calls, no waiting in line.</p>
-    <div class="next"><b>Next open slots</b>
-      <div class="chips">${nf.length?nf.map(x=>`<button class="chip" onclick="quick('${x.d}','${x.t}')">${x.d==today()?'Today':fd(x.d)}, ${ft(x.t)}</button>`).join(''):'<span>No slots open this week. Please call us.</span>'}</div>
-    </div>
-    <p style="margin-top:18px"><a class="btn" href="#/book">Choose your own time</a></p>
-  </div></div>
-  <section style="background:#fff"><div class="wrap two">
-    <div><h2>Your dentist</h2><div class="doc"><div class="avatar">👩‍⚕️</div><div><h3>${esc(C.doctor)}</h3><div>${esc(C.qual)}</div><small>${esc(C.exp)}</small></div></div></div>
-    <div><h2>Visit us</h2><p>${esc(C.name)}, ${esc(C.area)}</p><p>${esc(C.hours)}</p><p>Call: <a href="tel:${C.phone}">${C.phone}</a></p></div>
-  </div></section>`;
-}
-function stepBar(){return `<div class="steps">${[1,2,3].map(i=>`<i class="${i<=bk.step?'d':''}"></i>`).join('')}</div>`}
+function groups(d){const s=slotsFor(d);return[[t('morning'),s.filter(x=>x<'12:00')],[t('afternoon'),s.filter(x=>x>='12:00'&&x<'16:00')],[t('evening'),s.filter(x=>x>='16:00')]].filter(g=>g[1].length)}
+function home(){const nf=nextFree(5);
+ return `<div class="hero"><div class="wrap"><h1 tabindex="-1">${t('tag')}</h1><p>${t('sub')}</p>
+ <div class="next"><b>${t('next')}</b><div class="chips">${nf.length?nf.map(x=>`<button class="chip" onclick="quick('${x.d}','${x.x}')">${x.d==today()?(lg=='ta'?'இன்று':'Today'):fd(x.d)}, ${ft(x.x)}</button>`).join(''):`<span>No slots open this week. Please call us.</span>`}</div></div>
+ <p style="margin-top:18px"><a class="btn" href="#/book">${t('book')}</a></p></div></div>
+ <section><div class="wrap"><h2>${t('svc')}</h2><div class="grid">${SV.map(s=>`<div class="card svc"><div class="i">${s[0]}</div><h3>${s[1]}</h3><small>${s[2]}</small></div>`).join('')}</div></div></section>
+ <section style="background:#fff"><div class="wrap two">
+ <div><h2>Your dentist</h2><div class="doc"><div class="avatar" ${C.photo?`style="background-image:url('${esc(C.photo)}')"`:''}>${C.photo?'':esc(C.doctor.replace('Dr. ','').split(' ').map(w=>w[0]).join(''))}</div><div><h3>${esc(C.doctor)}</h3><div>${esc(C.qual)}</div><small>${esc(C.exp)}</small></div></div>
+ ${C.reviews.length?C.reviews.map(r=>`<p class="card" style="margin-top:10px">“${esc(r.t)}”<br><small>${esc(r.n)}</small></p>`).join(''):''}</div>
+ <div><h2>Visit us</h2><p>${esc(C.name)}, ${esc(C.area)}</p><p>${esc(C.hours)}</p><p>Call: <a href="tel:${C.phone}">${C.phone}</a></p>
+ <iframe title="Clinic map" loading="lazy" src="https://www.google.com/maps?q=${encodeURIComponent(C.mapQ)}&output=embed"></iframe></div></div></section>
+ <section><div class="wrap" style="max-width:640px"><h2>Questions</h2>${FQ.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}</div></section>`}
 function book(){
-  let h=`<section><div class="wrap" style="max-width:640px"><h2>${bk.walk?'Add walk-in patient':'Book an appointment'}</h2>${stepBar()}`;
-  if(bk.step==1){
-    h+=`<p class="sub">1. Choose a date</p><div class="chips">${days(14).map(d=>`<button class="chip ${bk.date==d?'on':''}" onclick="pick('date','${d}',2)">${d==today()?'Today':fd(d)}</button>`).join('')}</div>`;
-  }else if(bk.step==2){
-    const any=slotsFor(bk.date).some(t=>free(bk.date,t));
-    h+=`<p class="sub">2. Choose a time on ${fd(bk.date)}</p>${any?'':'<p class="err">No slots left on this day. Please pick another date.</p>'}<div class="chips">${slotsFor(bk.date).map(t=>`<button class="chip ${bk.time==t?'on':''}" ${free(bk.date,t)?'':'disabled'} onclick="pick('time','${t}',3)">${ft(t)}</button>`).join('')}</div>`;
-  }else{
-    h+=`<p class="sub">3. Your details</p><div class="sum"><b>${fd(bk.date)}</b> at ${ft(bk.time)}</div>
-    <label for="nm">Full name</label><input id="nm" autocomplete="name">
-    <label for="ph">Mobile number</label><input id="ph" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit number">
-    <div class="err" id="er">${esc(bk.err)}</div>
-    <button class="btn" onclick="confirmBk()">${bk.walk?'Save walk-in':'Confirm appointment'}</button>`;
-  }
-  if(bk.step>1)h+=`<p style="margin-top:16px"><button class="btn ghost sm" onclick="bk.step--;route()">Back</button></p>`;
-  return h+`</div></section>`;
-}
-function success(){
-  const a=lastBooked;if(!a)return '<section><div class="wrap"><p>No booking found. <a href="#/book">Book now</a></p></div></section>';
-  return `<section><div class="wrap" style="max-width:560px;text-align:center"><div style="font-size:3rem">✅</div><h2>You're booked in</h2>
-  <div class="sum" style="text-align:left"><b>${fd(a.date)} at ${ft(a.time)}</b><br>${esc(a.name)} · ${esc(a.phone)}<br>Status: <span class="badge ${a.status}">${a.status}</span></div>
-  <p>The clinic will confirm your visit. Please arrive 10 minutes early. To reschedule, call <a href="tel:${C.phone}">${C.phone}</a>.</p>
-  <p style="margin-top:16px"><a class="btn" href="#/">Back to home</a></p></div></section>`;
-}
-function staff(){
-  const r=role();
-  if(!r)return `<section><div class="wrap" style="max-width:420px"><h2>Staff login</h2><p class="sub">For the receptionist and the doctor.</p>
-    <label for="rl">I am the</label><select id="rl"><option value="reception">Receptionist</option><option value="doctor">Doctor</option></select>
-    <label for="pn">PIN</label><input id="pn" type="password" inputmode="numeric">
-    <div class="err" id="er"></div><button class="btn" onclick="login()">Log in</button>
-    <p style="margin-top:10px"><small>Demo PINs: receptionist 1234, doctor 5678</small></p></div></section>`;
-  return r=='reception'?reception():doctor();
-}
-function apCard(a,full){
-  const wa=`https://wa.me/91${a.phone}?text=${encodeURIComponent('Hello '+a.name+', your dental appointment at '+C.name+' is on '+fd(a.date)+' at '+ft(a.time)+'.')}`;
-  return `<div class="card ap"><div class="t">${ft(a.time)}</div><div class="m"><b>${esc(a.name)}</b> <span class="badge ${a.status}">${a.status}</span><br>${a.source=='Walk-in'?'Walk-in':'Online booking'}<br><a href="tel:${a.phone}">${a.phone}</a></div>
-  ${full&&a.status!='Cancelled'&&a.status!='Completed'?`<div class="acts">
-    ${a.status=='Pending'?`<button class="btn sm" onclick="setSt('${a.id}','Confirmed')">Confirm</button>`:`<button class="btn sm" onclick="setSt('${a.id}','Completed')">Done</button>`}
-    <a class="btn ghost sm" target="_blank" rel="noopener" href="${wa}">WhatsApp</a>
-    <button class="btn red sm" onclick="setSt('${a.id}','Cancelled')">Cancel</button></div>`:''}</div>`;
-}
-function reception(){
-  const list=A.filter(a=>a.date==adminDate).sort((x,y)=>x.time.localeCompare(y.time));
-  const t=A.filter(a=>a.date==today()&&a.status!='Cancelled').length, p=A.filter(a=>a.status=='Pending').length;
-  return `<section><div class="wrap"><h2>Receptionist dashboard</h2>
-  <div class="stats"><div class="stat"><b>${t}</b>Today</div><div class="stat"><b>${p}</b>Pending</div><div class="stat"><b>${A.length}</b>All bookings</div></div>
-  <div class="tabs"><a class="btn sm" href="#/book" onclick="bk={step:1,walk:true,err:''}">+ Add walk-in</a><button class="btn ghost sm" onclick="logout()">Log out</button></div>
-  <label for="ad">Show date</label><input type="date" id="ad" value="${adminDate}" onchange="adminDate=this.value;route()" style="max-width:220px;margin-bottom:14px">
-  <div style="display:grid;gap:10px">${list.length?list.map(a=>apCard(a,true)).join(''):'<div class="card empty">No appointments on this day.</div>'}</div></div></section>`;
-}
-function doctor(){
-  const list=A.filter(a=>a.date==today()&&a.status!='Cancelled').sort((x,y)=>x.time.localeCompare(y.time));
-  const full=B.includes(blockDate+'|*');
-  return `<section><div class="wrap"><h2>${esc(C.doctor)}: today</h2><p class="sub">${fd(today())}, ${list.length} patient(s)</p>
-  <div style="display:grid;gap:10px">${list.length?list.map(a=>apCard(a,false)).join(''):'<div class="card empty">No patients booked for today.</div>'}</div>
-  <h2 style="margin-top:34px">Block time off</h2><p class="sub">Tap a slot to block it. Tap again to open it.</p>
-  <input type="date" value="${blockDate}" min="${today()}" onchange="blockDate=this.value;route()" style="max-width:220px;margin-bottom:12px">
-  <div class="chips">${slotsFor(blockDate).map(t=>{const b=B.includes(blockDate+'|'+t),bk2=A.some(a=>a.date==blockDate&&a.time==t&&a.status!='Cancelled');return `<button class="chip ${b?'on':''}" ${bk2||full?'disabled':''} onclick="toggleB('${t}')">${ft(t)}${b?' (blocked)':''}</button>`}).join('')}</div>
-  <p style="margin-top:14px"><button class="btn ${full?'':'red'} sm" onclick="toggleB('*')">${full?'Open this day again':'Block the whole day'}</button></p>
-  <p style="margin-top:20px"><button class="btn ghost sm" onclick="logout()">Log out</button></p></div></section>`;
-}
+ let h=`<section><div class="wrap" style="max-width:640px"><h2 tabindex="-1">${t('book')}</h2><div class="steps">${[1,2,3].map(i=>`<i class="${i<=bk.step?'d':''}"></i>`).join('')}</div><div class="stl"><span>${t('d1')}</span><span>${t('d2')}</span><span>${t('d3')}</span></div>`;
+ if(bk.step==1){h+=`<div class="days">${days(14).map(d=>{const full=!slotsFor(d).some(x=>free(d,x)),dt=new Date(d+'T00:00');return `<button class="chip day" aria-pressed="${bk.date==d}" ${full?'disabled':''} onclick="pick('date','${d}',2)"><small>${dt.toLocaleDateString(lg=='ta'?'ta-IN':'en-IN',{weekday:'short'})}</small><b>${dt.getDate()}</b><small>${dt.toLocaleDateString(lg=='ta'?'ta-IN':'en-IN',{month:'short'})}</small></button>`}).join('')}</div><p class="sub" style="margin-top:8px">Struck-out dates are full.</p>`}
+ else if(bk.step==2){h+=`<p class="sub">${fd(bk.date)}</p>`+groups(bk.date).map(g=>`<div class="grp">${g[0]}</div><div class="chips">${g[1].map(x=>`<button class="chip" aria-pressed="${bk.time==x}" ${free(bk.date,x)?'':'disabled'} onclick="pick('time','${x}',3)">${ft(x)}</button>`).join('')}</div>`).join('')}
+ else{h+=`<div class="sum"><b>${fd(bk.date)}</b> at ${ft(bk.time)}</div>
+ <label for="nm">${t('name')}</label><input id="nm" autocomplete="name" autofocus>
+ <label for="ph">${t('phone')}</label><div class="pre"><span>+91</span><input id="ph" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="10-digit number"></div>
+ <label for="rs">Reason for visit</label><select id="rs">${['Check-up','Cleaning','Tooth pain','Filling / RCT','Braces / aligners','Other'].map(r=>`<option ${bk.reason==r?'selected':''}>${r}</option>`).join('')}</select>
+ <input class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+ <label style="font-weight:400;display:flex;gap:8px;align-items:flex-start"><input id="cs" type="checkbox" style="width:20px;min-height:20px;margin-top:3px">I agree that the clinic may use my name and number to manage this appointment.</label>
+ <div class="err" id="er" role="alert"></div><button class="btn" id="cb" onclick="confirmBk()">${t('confirm')}</button>`}
+ if(bk.step>1)h+=`<p style="margin-top:16px"><button class="btn ghost sm" onclick="bk.step--;route()">${t('back')}</button></p>`;
+ return h+`</div></section>`}
+function success(){const a=ld('sc_last',null);if(!a)return `<section><div class="wrap"><p>No booking found. <a href="#/book">Book now</a></p></div></section>`;
+ const wa=`https://wa.me/${C.wa}?text=${encodeURIComponent('Hello, I booked '+fd(a.date)+' '+ft(a.time)+'. Code '+a.ref+'. Name: '+a.name)}`;
+ return `<section><div class="wrap" style="max-width:560px;text-align:center"><div style="font-size:3rem">✅</div><h2 tabindex="-1">You're booked in</h2>
+ <div class="sum" style="text-align:left"><b>${fd(a.date)} at ${ft(a.time)}</b><br>${esc(a.name)} · ${esc(a.phone)}<br>Booking code: <b>${a.ref}</b><br>Status: <span class="badge Pending">Pending</span></div>
+ <p>Save your booking code. You will need it with your mobile number to cancel or check status. Please arrive 10 minutes early.</p>
+ <p style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn" onclick="ics()">Add to calendar</button><a class="btn ghost" target="_blank" rel="noopener" href="${wa}">Message clinic on WhatsApp</a><a class="btn ghost" href="#/manage">My booking</a></p></div></section>`}
+function manage(){return `<section><div class="wrap" style="max-width:420px"><h2 tabindex="-1">${t('manage')}</h2><p class="sub">Enter your booking code and mobile number.</p>
+ <label for="rf">Booking code</label><input id="rf" placeholder="SCXXXXXX"><label for="mp">${t('phone')}</label><input id="mp" inputmode="numeric" maxlength="10">
+ <div class="err" id="er" role="alert"></div><button class="btn" onclick="find()">Find booking</button><div id="mr"></div></div></section>`}
+async function staff(){
+ if(!user)return `<section><div class="wrap" style="max-width:420px"><h2 tabindex="-1">Staff login</h2><p class="sub">For the receptionist and the doctor.</p>
+ <label for="em">Email</label><input id="em" type="email" autocomplete="username" value="${SB?'':'demo'}"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+ <div class="err" id="er" role="alert"></div><button class="btn" onclick="login()">Log in</button></div></section>`;
+ const all=await api.list(),bl=await api.blocks(blockDate),ql=q.toLowerCase();
+ const list=(ql?all.filter(a=>(a.name+a.phone+a.ref).toLowerCase().includes(ql)):all.filter(a=>a.date==adminDate)).sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time));
+ const td=all.filter(a=>a.date==today()&&!['Cancelled','No-show'].includes(a.status)).length,pd=all.filter(a=>a.status=='Pending'&&a.date>=today()).length,full=bl.includes('*');
+ return `<section><div class="wrap"><h2 tabindex="-1">Clinic dashboard</h2>
+ <div class="stats"><div class="stat"><b>${td}</b>Today</div><div class="stat"><b>${pd}</b>Pending</div><div class="stat"><b>${all.length}</b>All bookings</div></div>
+ <div class="tabs"><button class="btn ghost sm" onclick="logout()">Log out</button></div>
+ <div class="tabs" style="align-items:end"><div><label for="ad">Show date</label><input type="date" id="ad" value="${adminDate}" onchange="adminDate=this.value;q='';route()"></div>
+ <div style="flex:1;min-width:180px"><label for="sq">Search name, phone or code (all dates)</label><input id="sq" value="${esc(q)}" onchange="q=this.value;route()"></div></div>
+ <details style="margin:12px 0"><summary>+ Add walk-in patient</summary><label for="wt">Time</label><select id="wt">${slotsFor(adminDate).filter(x=>x>=nowT()||adminDate>today()).map(x=>`<option value="${x}">${ft(x)}</option>`).join('')}</select>
+ <label for="wn">Name</label><input id="wn"><label for="wp">Mobile</label><input id="wp" inputmode="numeric" maxlength="10"><div class="err" id="er" role="alert"></div><button class="btn sm" onclick="walkIn()">Save walk-in</button></details>
+ <div style="display:grid;gap:10px">${list.length?list.map(apCard).join(''):'<div class="card empty">No appointments found. Try another date.</div>'}</div>
+ <h2 style="margin-top:34px">Block time off</h2><p class="sub">Tap a slot to block it. Tap again to open it.</p>
+ <input type="date" value="${blockDate}" min="${today()}" onchange="blockDate=this.value;route()" style="max-width:220px;margin-bottom:12px" aria-label="Date to block">
+ <div class="chips">${slotsFor(blockDate).map(x=>{const b=bl.includes(x),bkd=all.some(a=>a.date==blockDate&&a.time==x&&!['Cancelled','No-show'].includes(a.status));return `<button class="chip" aria-pressed="${b}" ${bkd||full?'disabled':''} onclick="toggleB('${x}',${!b})">${ft(x)}${b?' (blocked)':''}</button>`}).join('')}</div>
+ <p style="margin-top:14px"><button class="btn ${full?'':'red'} sm" onclick="toggleB('*',${!full})">${full?'Open this day again':'Block the whole day'}</button></p></div></section>`}
+function apCard(a){
+ const wa=`https://wa.me/91${a.phone}?text=${encodeURIComponent('Hello '+a.name+', your dental appointment at '+C.name+' is on '+fd(a.date)+' at '+ft(a.time)+'. Reply to confirm.')}`,live=!['Cancelled','Completed','No-show'].includes(a.status);
+ return `<div class="card ap"><div class="t">${ft(a.time)}<br><small>${fd(a.date)}</small></div><div class="m"><b>${esc(a.name)}</b> <span class="badge ${a.status}">${a.status}</span><br>${esc(a.source)} · ${esc(a.reason||'')} · <small>${esc(a.ref||'')}</small><br><a href="tel:${esc(a.phone)}">${esc(a.phone)}</a></div>
+ ${live?`<div class="acts">${a.status=='Pending'?`<button class="btn sm" onclick="setSt('${a.id}','Confirmed')">Confirm</button>`:`<button class="btn sm" onclick="setSt('${a.id}','Completed')">Done</button><button class="btn ghost sm" onclick="setSt('${a.id}','No-show')">No-show</button>`}
+ <a class="btn ghost sm" target="_blank" rel="noopener" href="${wa}">WhatsApp</a><button class="btn red sm" onclick="if(confirm('Cancel this appointment?'))setSt('${a.id}','Cancelled')">Cancel</button></div>`:''}</div>`}
+
 /* ===== actions ===== */
-function quick(d,t){bk={step:3,date:d,time:t,walk:false,err:''};location.hash='#/book';route()}
-function pick(k,v,next){bk[k]=v;if(k=='date')bk.time=null;bk.step=next;route()}
-function confirmBk(){
-  const n=$('#nm').value.trim(),p=$('#ph').value.trim();
-  if(n.length<2){bk.err='Please enter your full name.';return route(true,n,p)}
-  if(!/^[6-9]\d{9}$/.test(p)){bk.err='Enter a valid 10-digit mobile number.';return route(true,n,p)}
-  if(!free(bk.date,bk.time)){bk.err='Sorry, that slot was just taken. Please pick another time.';bk.step=2;return route()}
-  const a={id:'a'+Date.now(),date:bk.date,time:bk.time,name:n,phone:p,status:bk.walk?'Confirmed':'Pending',source:bk.walk?'Walk-in':'Online'};
-  A.push(a);sv('sc_appts',A);lastBooked=a;
-  if(bk.walk){adminDate=a.date;bk={step:1,walk:false,err:''};toast('Walk-in saved');location.hash='#/staff';route()}
-  else{bk={step:1,walk:false,err:''};location.hash='#/success';route()}
-}
-function setSt(id,s){const a=A.find(x=>x.id==id);if(a){a.status=s;sv('sc_appts',A);toast('Marked '+s);route()}}
-function toggleB(t){const k=blockDate+'|'+t,i=B.indexOf(k);i>-1?B.splice(i,1):B.push(k);sv('sc_blocked',B);route()}
-function login(){
-  const r=$('#rl').value,p=$('#pn').value;
-  if(C.pins[r]===p){setRole(r);route()}else $('#er').textContent='Wrong PIN. Please try again.';
-}
-function logout(){setRole(null);route()}
-/* ===== router ===== */
-function route(keep,n,p){
-  const h=location.hash||'#/';
-  A=ld('sc_appts',A);B=ld('sc_blocked',B);
-  $('#app').innerHTML=h=='#/book'?book():h=='#/success'?success():h=='#/staff'?staff():home();
-  if(keep){$('#nm').value=n;$('#ph').value=p;bk.err=''}
-  window.scrollTo(0,0);
-}
-$('#foot').innerHTML=`<b>${C.name}</b><br>${C.area} · <a href="tel:${C.phone}">${C.phone}</a><br><small>${C.hours}</small>`;
-window.addEventListener('hashchange',()=>route());
-route();
+function quick(d,x){bk={step:3,date:d,time:x,reason:'Check-up'};location.hash='#/book'}
+function pick(k,v,n){bk[k]=v;if(k=='date')bk.time=null;bk.step=n;route()}
+async function confirmBk(){
+ const n=$('#nm').value.trim(),p=$('#ph').value.trim(),er=m=>{$('#er').textContent=m};
+ if(n.length<2)return er('Please enter your full name.');
+ if(!/^[6-9]\d{9}$/.test(p))return er('Enter a valid 10-digit mobile number.');
+ if(!$('#cs').checked)return er('Please tick the consent box to continue.');
+ const a={ref:ref(),date:bk.date,time:bk.time,name:n,phone:p,reason:$('#rs').value,status:'Pending',source:'Online'};
+ $('#cb').disabled=true;$('#cb').textContent='Booking…';
+ if($('#hp').value){location.hash='#/success';return}
+ const e=await api.book(a);
+ if(e){$('#cb').disabled=false;$('#cb').textContent=t('confirm');er(e);if(/taken/.test(e)){bk.step=2;await api.load();route()}return}
+ sv('sc_last',a);bk={step:1,date:null,time:null,reason:'Check-up'};location.hash='#/success'}
+async function find(){const r=$('#rf').value.trim().toUpperCase(),p=$('#mp').value.trim(),a=await api.lookup(r,p);
+ if(!a)return $('#er').textContent='No booking found. Check the code and number.';$('#er').textContent='';
+ $('#mr').innerHTML=`<div class="sum"><b>${fd(a.date)} at ${ft(a.time)}</b><br>${esc(a.name)} · ${esc(a.reason||'')}<br>Status: <span class="badge ${a.status}">${a.status}</span></div>${['Pending','Confirmed'].includes(a.status)?`<button class="btn red sm" onclick="doCancel('${esc(r)}','${esc(p)}')">Cancel appointment</button>`:''}`}
+async function doCancel(r,p){if(!confirm('Cancel this appointment?'))return;await api.cancel(r,p);toast('Appointment cancelled');find()}
+async function setSt(id,s){await api.status(id,s);toast('Marked '+s);route()}
+async function toggleB(x,on){await api.block(blockDate,x,on);route()}
+async function walkIn(){const n=$('#wn').value.trim(),p=$('#wp').value.trim(),x=$('#wt').value;
+ if(n.length<2||!/^[6-9]\d{9}$/.test(p)||!x)return $('#er').textContent='Enter a name, a valid 10-digit mobile and a time.';
+ const e=await api.book({ref:ref(),date:adminDate,time:x,name:n,phone:p,reason:'Walk-in',status:'Confirmed',source:'Walk-in'});
+ if(e)return $('#er').textContent=e;toast('Walk-in saved');route()}
+function ics(){const a=ld('sc_last',null);if(!a)return;const s=a.date.replace(/-/g,'')+'T'+a.time.replace(':','')+'00',m=+a.time.slice(0,2)*60+ +a.time.slice(3)+30,e=a.date.replace(/-/g,'')+'T'+pad(Math.floor(m/60))+pad(m%60)+'00';
+ const b=new Blob([`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART:${s}\r\nDTEND:${e}\r\nSUMMARY:Dental appointment at ${C.name}\r\nLOCATION:${C.area}\r\nDESCRIPTION:Booking code ${a.ref}\r\nEND:VEVENT\r\nEND:VCALENDAR`],{type:'text/calendar'});
+ const l=document.createElement('a');l.href=URL.createObjectURL(b);l.download='smilecare-appointment.ics';l.click()}
+
+/* ===== chrome + router ===== */
+function chrome(){$('#nbk').textContent=t('book');$('#nmg').textContent=t('manage');$('#bbook').textContent=t('book');$('#bcall').textContent='📞 '+t('call');$('#bcall').href='tel:'+C.phone;$('#wa').href='https://wa.me/'+C.wa;document.documentElement.lang=lg=='ta'?'ta':'en';
+ $('#demo').innerHTML=SB?'':'<div class="demo">Demo mode: bookings stay in this browser only. Add Supabase keys to go live.</div>';
+ $('#foot').innerHTML=`<b>${C.name}</b><br>${C.area} · <a href="tel:${C.phone}">${C.phone}</a><br><small>${C.hours}</small>`}
+const TI={'#/book':'Book an appointment','#/success':'Booking confirmed','#/manage':'My booking','#/staff':'Staff'};
+async function route(){
+ const h=location.hash||'#/';
+ if(h=='#/book'||h=='#/'||h=='')await api.load();
+ $('#app').innerHTML=h=='#/book'?book():h=='#/success'?success():h=='#/manage'?manage():h=='#/staff'?await staff():home();
+ document.title=(TI[h]?TI[h]+' · ':'')+C.name;chrome();
+ const f=$('#app h1,#app h2');if(f&&h!='#/book'||(h=='#/book'&&bk.step<3))f&&f.focus({preventScroll:true});
+ if(h=='#/book'&&bk.step==3)$('#nm')?.focus();
+ window.scrollTo(0,0)}
+window.addEventListener('hashchange',route);
+authInit().then(route);
 </script>
 </body>
 </html>
